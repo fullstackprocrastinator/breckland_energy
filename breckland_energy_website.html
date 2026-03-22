@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breckland Energy | EPC Assessments | Attleborough, Norfolk</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0B1D2E;
+  --navy-mid: #132E45;
+  --navy-light: #1A3F5C;
+  --teal: #2EC4B6;
+  --teal-dark: #1FA89B;
+  --amber: #E8A838;
+  --amber-light: #F5C76B;
+  --cream: #F7F4EE;
+  --cream-dark: #EDE8DF;
+  --white: #FFFFFF;
+  --text: #1A1A1A;
+  --text-light: #5A6270;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── UTILITY ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.anim-fade-up { animation: fadeUp 0.8s ease-out both; }
+.anim-delay-1 { animation-delay: 0.15s; }
+.anim-delay-2 { animation-delay: 0.3s; }
+.anim-delay-3 { animation-delay: 0.45s; }
+.anim-delay-4 { animation-delay: 0.6s; }
+.anim-delay-5 { animation-delay: 0.75s; }
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(11, 29, 46, 0.97);
+  backdrop-filter: blur(12px);
+  padding: 12px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+}
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.nav-logo-svg {
+  height: 36px;
+  width: auto;
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-cta {
+  background: var(--teal) !important;
+  color: var(--navy) !important;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  transition: all 0.3s !important;
+}
+.nav-cta:hover { background: var(--amber) !important; transform: translateY(-1px); }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-light) 100%);
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 600px at 80% 20%, rgba(46, 196, 182, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 20% 80%, rgba(232, 168, 56, 0.06) 0%, transparent 70%);
+}
+.hero-grid-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero .container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+.hero-content { max-width: 560px; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(46, 196, 182, 0.12);
+  border: 1px solid rgba(46, 196, 182, 0.25);
+  border-radius: 100px;
+  padding: 8px 18px;
+  margin-bottom: 32px;
+  animation: fadeUp 0.6s ease-out both;
+}
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse 2s infinite;
+}
+.hero-badge span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease-out 0.1s both;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal);
+}
+.hero-sub {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 300;
+  animation: fadeUp 0.8s ease-out 0.2s both;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s ease-out 0.35s both;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--teal);
+  color: var(--navy);
+}
+.btn-primary:hover { background: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,168,56,0.3); }
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+/* Hero right - credential cards */
+.hero-visual {
+  position: relative;
+  animation: fadeIn 1s ease-out 0.4s both;
+}
+.credential-stack {
+  position: relative;
+  height: 480px;
+}
+.credential-card {
+  position: absolute;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 28px 32px;
+  transition: transform 0.4s ease;
+}
+.credential-card:hover { transform: translateY(-4px) !important; }
+.card-1 { top: 0; left: 20px; right: 40px; animation: fadeUp 0.8s ease-out 0.5s both; }
+.card-2 { top: 140px; left: 0; right: 20px; animation: fadeUp 0.8s ease-out 0.65s both; }
+.card-3 { top: 280px; left: 40px; right: 0; animation: fadeUp 0.8s ease-out 0.8s both; }
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+}
+.card-icon-teal { background: rgba(46,196,182,0.15); color: var(--teal); }
+.card-icon-amber { background: rgba(232,168,56,0.15); color: var(--amber); }
+.credential-card h3 {
+  color: var(--white);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.credential-card p {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--cream-dark);
+  padding: 28px 0;
+}
+.trust-bar .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+.trust-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.trust-icon-green { background: #E8F5E9; color: #2E7D32; }
+.trust-icon-blue { background: #E3F2FD; color: #1565C0; }
+.trust-icon-amber { background: #FFF8E1; color: #E65100; }
+
+/* ── SECTIONS ── */
+section { padding: 100px 0; }
+
+.section-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.section-desc {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  max-width: 600px;
+  font-weight: 300;
+}
+
+/* ── ABOUT / DIFFERENTIATOR ── */
+.about { background: var(--cream); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 60px;
+}
+.about-visual {
+  position: relative;
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 48px;
+  overflow: hidden;
+}
+.about-visual::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(46,196,182,0.12) 0%, transparent 70%);
+}
+.about-stat {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.about-stat:last-child { margin-bottom: 0; }
+.about-stat-number {
+  font-family: var(--serif);
+  font-size: 3.2rem;
+  color: var(--teal);
+  line-height: 1;
+}
+.about-stat-label {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.9rem;
+  margin-top: 6px;
+  font-weight: 400;
+}
+.about-text h3 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+.about-text p {
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-weight: 300;
+  font-size: 1.02rem;
+}
+.about-text strong { color: var(--navy); font-weight: 600; }
+
+/* ── SERVICES ── */
+.services { background: var(--white); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 60px;
+}
+.service-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 36px 32px;
+  border: 1px solid transparent;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--amber));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.service-card:hover {
+  border-color: rgba(46,196,182,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(11,29,46,0.08);
+}
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  background: var(--navy);
+  color: var(--teal);
+}
+.service-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.service-card p {
+  color: var(--text-light);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  font-weight: 300;
+}
+.service-price {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: rgba(46,196,182,0.1);
+  color: var(--teal-dark);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+/* ── LANDLORD CTA BANNER ── */
+.landlord-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.landlord-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 500px 300px at 90% 50%, rgba(232,168,56,0.1) 0%, transparent 70%);
+}
+.landlord-banner .container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+}
+.landlord-content h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.landlord-content h2 em { color: var(--amber); font-style: italic; }
+.landlord-content p {
+  color: rgba(255,255,255,0.65);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 580px;
+}
+.landlord-deadline {
+  background: rgba(232,168,56,0.1);
+  border: 1px solid rgba(232,168,56,0.25);
+  border-radius: 16px;
+  padding: 32px 40px;
+  text-align: center;
+  min-width: 240px;
+}
+.landlord-deadline-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+.landlord-deadline-date {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  color: var(--white);
+  line-height: 1.1;
+}
+.landlord-deadline-sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+/* ── COVERAGE AREA ── */
+.coverage { background: var(--cream); }
+.coverage-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 60px;
+}
+.town-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.town-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--cream-dark);
+  transition: all 0.3s;
+}
+.town-pill:hover {
+  border-color: var(--teal);
+  transform: translateX(4px);
+}
+.town-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.town-dot-primary { background: var(--teal); }
+.town-dot-secondary { background: var(--amber); }
+.town-pill span {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--navy);
+}
+.coverage-text p {
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-weight: 300;
+  font-size: 1.02rem;
+}
+.coverage-text strong { color: var(--navy); font-weight: 600; }
+
+/* ── PROCESS ── */
+.process { background: var(--white); }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+.process-step {
+  text-align: center;
+  padding: 32px 20px;
+  position: relative;
+}
+.process-num {
+  font-family: var(--serif);
+  font-size: 3rem;
+  color: var(--cream-dark);
+  line-height: 1;
+  margin-bottom: 16px;
+  transition: color 0.3s;
+}
+.process-step:hover .process-num { color: var(--teal); }
+.process-step h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.process-step p {
+  color: var(--text-light);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ── CONTACT ── */
+.contact {
+  background: var(--navy);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 500px 500px at 10% 90%, rgba(46,196,182,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 90% 10%, rgba(232,168,56,0.05) 0%, transparent 70%);
+}
+.contact .container { position: relative; z-index: 2; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 50px;
+}
+.contact .section-label { color: var(--teal); }
+.contact .section-title { color: var(--white); }
+.contact .section-desc { color: rgba(255,255,255,0.6); }
+.contact-info-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+.contact-info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(46,196,182,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: var(--teal);
+}
+.contact-info-item h4 {
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.contact-info-item p {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.contact-logo-mark {
+  margin-bottom: 28px;
+}
+.contact-icon-mark {
+  width: 72px;
+  height: 72px;
+}
+.contact-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 40px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--teal); }
+.form-group select option { background: var(--navy); color: var(--white); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--teal);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all 0.3s;
+}
+.btn-submit:hover { background: var(--amber); transform: translateY(-1px); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+footer p {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.82rem;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-logo {
+  height: 28px;
+  width: auto;
+  opacity: 0.85;
+}
+footer a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: color 0.3s;
+}
+footer a:hover { color: var(--teal); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .landlord-banner .container { grid-template-columns: 1fr; text-align: center; }
+  .landlord-content p { max-width: 100%; }
+  .landlord-deadline { margin: 0 auto; }
+  .coverage-layout { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .trust-bar .container { gap: 24px; }
+  section { padding: 70px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 60" class="nav-logo-svg"><defs><linearGradient id="navTealGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2EC4B6"/><stop offset="100%" stop-color="#1FA89B"/></linearGradient></defs><g transform="translate(2, 4)"><path d="M25 10 L8 23 L8 50 L42 50 L42 23 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><rect x="33" y="5" width="6" height="13" rx="1" fill="#FFFFFF"/><path d="M28 20 L20 33 L26 33 L23 46 L34 30 L28 30 Z" fill="url(#navTealGrad)"/></g><text x="56" y="30" font-family="'Georgia','Times New Roman',serif" font-size="22" font-weight="700" fill="#FFFFFF" letter-spacing="1" dominant-baseline="central">BRECKLAND</text><text x="220" y="30" font-family="'Arial','Helvetica',sans-serif" font-size="22" font-weight="300" fill="#2EC4B6" letter-spacing="3" dominant-baseline="central">ENERGY</text></svg></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#coverage">Areas</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+    <button class="mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-pattern"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span>Attleborough &amp; Breckland, Norfolk</span>
+      </div>
+      <h1>Your EPC, assessed by a <em>Quantity Surveyor.</em></h1>
+      <p class="hero-sub">Not just another energy assessment. We bring construction-grade precision to every EPC &mdash; because your property deserves an assessor who actually understands how buildings work.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Book Your EPC</a>
+        <a href="#services" class="btn btn-outline">View Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="credential-stack">
+        <div class="credential-card card-1">
+          <div class="card-icon card-icon-teal">&#9670;</div>
+          <h3>Chartered QS Background</h3>
+          <p>Years of professional construction experience. We don&rsquo;t guess about building fabric &mdash; we know it.</p>
+        </div>
+        <div class="credential-card card-2">
+          <div class="card-icon card-icon-amber">&#9733;</div>
+          <h3>Accredited &amp; Insured</h3>
+          <p>Fully accredited DEA. Professional indemnity and public liability insurance on every assessment.</p>
+        </div>
+        <div class="credential-card card-3">
+          <div class="card-icon card-icon-teal">&#9041;</div>
+          <h3>Local to Attleborough</h3>
+          <p>Based right here in NR17. Faster service, lower travel costs, and genuine local knowledge.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-item">
+      <div class="trust-icon trust-icon-green">&#10003;</div>
+      <span>Government Accredited Assessor</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon trust-icon-blue">&#9201;</div>
+      <span>48-Hour Certificate Turnaround</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon trust-icon-amber">&#9878;</div>
+      <span>Fully Insured &amp; Compliant</span>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon trust-icon-green">&#8362;</div>
+      <span>Transparent, Fair Pricing</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-label">The Difference</div>
+    <div class="section-title">Most energy assessors completed a course.<br>Ours built a career in construction first.</div>
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-stat">
+          <div class="about-stat-number">QS</div>
+          <div class="about-stat-label">Qualified Quantity Surveyor</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-number">L3</div>
+          <div class="about-stat-label">Level 3 Domestic Energy Assessment</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-number">NR17</div>
+          <div class="about-stat-label">Based in Attleborough, Norfolk</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <h3>Construction expertise meets energy assessment.</h3>
+        <p>We&rsquo;re a husband-and-wife team built on a simple premise: <strong>an EPC is only as good as the person who conducts it.</strong></p>
+        <p>With a professional Quantity Surveying background, our lead assessor brings a level of construction knowledge that most energy assessors simply don&rsquo;t have. We understand wall construction, insulation specifications, heating system efficiencies, and thermal performance &mdash; not from a textbook, but from years of hands-on experience in the building industry.</p>
+        <p>That means your EPC isn&rsquo;t a rushed, box-ticking exercise. It&rsquo;s a <strong>thorough, technically rigorous assessment</strong> that captures the true energy performance of your property &mdash; and gives you practical, informed advice on how to improve it.</p>
+        <p>And because we&rsquo;re based right here in Attleborough, you get a <strong>fast, personal, local service</strong> with none of the booking fees or delays of the national call-centre providers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label">What We Do</div>
+    <div class="section-title">Energy assessments done properly.</div>
+    <p class="section-desc">From a single EPC for a property sale to a full compliance strategy for your rental portfolio &mdash; we&rsquo;ve got you covered.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">&#9751;</div>
+        <h3>Domestic EPC</h3>
+        <p>The standard Energy Performance Certificate for houses, bungalows, and flats. Legally required when selling or letting. Lodged on the official register within 48 hours.</p>
+        <span class="service-price">From &pound;75</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9879;</div>
+        <h3>Landlord Compliance Package</h3>
+        <p>Preparing for the 2030 EPC C deadline? Our compliance package includes a full EPC assessment, a prioritised improvement report with costings, and a reassessment after works are completed.</p>
+        <span class="service-price">From &pound;120</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9889;</div>
+        <h3>Express Same-Day Service</h3>
+        <p>Need your EPC urgently? We offer same-day and next-day assessments for Attleborough and surrounding areas. Certificate lodged the same evening.</p>
+        <span class="service-price">From &pound;95</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9881;</div>
+        <h3>Energy Improvement Advice</h3>
+        <p>Drawing on our QS costing expertise, we provide detailed, practical guidance on the most cost-effective improvements to boost your rating &mdash; and what they&rsquo;ll actually cost to implement.</p>
+        <span class="service-price">Included with every EPC</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#8962;</div>
+        <h3>Portfolio Assessments</h3>
+        <p>Multiple properties? We offer competitive rates for landlords and agents with two or more properties. Efficient scheduling, bulk pricing, consistent quality.</p>
+        <span class="service-price">Discounted rates available</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9975;</div>
+        <h3>Pre-Sale Assessments</h3>
+        <p>Selling your home? Get your EPC sorted before you instruct an agent. We work with all major Attleborough and Norfolk estate agents and deliver fast.</p>
+        <span class="service-price">From &pound;75</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANDLORD CTA -->
+<section class="landlord-banner">
+  <div class="container">
+    <div class="landlord-content">
+      <h2>Breckland landlords: the <em>2030 EPC C deadline</em> is confirmed.</h2>
+      <p>All privately rented properties in England and Wales must achieve a minimum EPC rating of C by October 2030. With approximately 16,000 rental properties across Breckland, and over half currently rated below C, the time to act is now. We help landlords understand their current position, plan cost-effective improvements, and achieve compliance &mdash; before the rush.</p>
+      <div style="margin-top: 28px;">
+        <a href="#contact" class="btn btn-primary">Get Your Landlord Assessment</a>
+      </div>
+    </div>
+    <div class="landlord-deadline">
+      <div class="landlord-deadline-label">Compliance Deadline</div>
+      <div class="landlord-deadline-date">1 October<br>2030</div>
+      <div class="landlord-deadline-sub">Fines up to &pound;30,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage" id="coverage">
+  <div class="container">
+    <div class="section-label">Where We Work</div>
+    <div class="section-title">Based in Attleborough. Covering all of Breckland and beyond.</div>
+    <div class="coverage-layout">
+      <div class="town-grid">
+        <div class="town-pill"><div class="town-dot town-dot-primary"></div><span>Attleborough</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-primary"></div><span>Wymondham</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-primary"></div><span>Watton</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-primary"></div><span>Thetford</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-primary"></div><span>Dereham</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-primary"></div><span>Diss</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-secondary"></div><span>Long Stratton</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-secondary"></div><span>Swaffham</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-secondary"></div><span>Hingham</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-secondary"></div><span>Old Buckenham</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-secondary"></div><span>Kenninghall</span></div>
+        <div class="town-pill"><div class="town-dot town-dot-secondary"></div><span>Banham</span></div>
+      </div>
+      <div class="coverage-text">
+        <p>We&rsquo;re <strong>based in Attleborough, NR17</strong> &mdash; right in the heart of the Breckland district. That means we can reach every market town and village across our coverage area within 20&ndash;30 minutes.</p>
+        <p>Unlike Norwich-based assessors who face long round trips to reach you, we&rsquo;re already local. That translates to <strong>faster appointment availability, lower costs, and a genuinely personal service</strong> from an assessor who knows the area and the local housing stock.</p>
+        <p>We cover all surrounding villages and rural parishes too &mdash; from Besthorpe and Morley to Snetterton, Thompson, Rocklands, Great Ellingham, and everywhere in between. If you&rsquo;re within 20 miles of Attleborough, we&rsquo;ll be there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">Four steps to your EPC.</div>
+    <p class="section-desc">Simple, fast, and hassle-free from start to finish.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3>Get in Touch</h3>
+        <p>Call, email, or fill in the form below. Tell us about your property and we&rsquo;ll provide an instant quote &mdash; no hidden fees.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3>We Visit</h3>
+        <p>Our assessor visits your property at a time that suits you. The inspection typically takes 45&ndash;90 minutes depending on property size.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3>Assessment &amp; Report</h3>
+        <p>We input the data into approved RdSAP software, generate your certificate, and lodge it on the official government register.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3>Certificate Delivered</h3>
+        <p>Your EPC is emailed to you within 48 hours, complete with your energy rating and our practical improvement recommendations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-label">Get in Touch</div>
+    <div class="section-title">Ready to book your EPC?</div>
+    <p class="section-desc">Get a no-obligation quote in minutes. We typically respond within two hours during working days.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-logo-mark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" class="contact-icon-mark"><defs><linearGradient id="ctTealGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2EC4B6"/><stop offset="100%" stop-color="#1FA89B"/></linearGradient></defs><circle cx="60" cy="60" r="56" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/><g transform="translate(27, 18)"><path d="M33 14 L10 32 L10 72 L56 72 L56 32 Z" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><rect x="44" y="8" width="7.5" height="17" rx="1" fill="rgba(255,255,255,0.5)"/><path d="M37 28 L26 45 L33 45 L29 63 L43 41 L36 41 Z" fill="url(#ctTealGrad)"/></g></svg>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#9742;</div>
+          <div>
+            <h4>Phone</h4>
+            <p>01onal 000 0000</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#9993;</div>
+          <div>
+            <h4>Email</h4>
+            <p>info@brecklandenergy.co.uk</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#9041;</div>
+          <div>
+            <h4>Location</h4>
+            <p>Attleborough, Norfolk, NR17</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#9201;</div>
+          <div>
+            <h4>Availability</h4>
+            <p>Evenings and weekends available.<br>Same-day bookings where possible.</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="07xxx xxx xxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Property Postcode</label>
+            <input type="text" placeholder="e.g. NR17 2AE">
+          </div>
+          <div class="form-group">
+            <label>Service Required</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Domestic EPC</option>
+              <option>Landlord Compliance Package</option>
+              <option>Express Same-Day</option>
+              <option>Portfolio Assessment (2+ properties)</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message (optional)</label>
+          <textarea rows="3" placeholder="Any details about your property or requirements..."></textarea>
+        </div>
+        <button class="btn-submit">Request a Quote</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 60" class="footer-logo"><defs><linearGradient id="ftTealGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2EC4B6"/><stop offset="100%" stop-color="#1FA89B"/></linearGradient></defs><g transform="translate(2, 4)"><path d="M25 10 L8 23 L8 50 L42 50 L42 23 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><rect x="33" y="5" width="6" height="13" rx="1" fill="rgba(255,255,255,0.4)"/><path d="M28 20 L20 33 L26 33 L23 46 L34 30 L28 30 Z" fill="url(#ftTealGrad)"/></g><text x="56" y="30" font-family="'Georgia','Times New Roman',serif" font-size="22" font-weight="700" fill="rgba(255,255,255,0.4)" letter-spacing="1" dominant-baseline="central">BRECKLAND</text><text x="220" y="30" font-family="'Arial','Helvetica',sans-serif" font-size="22" font-weight="300" fill="rgba(46,196,182,0.5)" letter-spacing="3" dominant-baseline="central">ENERGY</text></svg>
+      <p>&copy; 2026 Breckland Energy. All rights reserved. Accredited Domestic Energy Assessor.</p>
+    </div>
+    <div>
+      <a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.service-card, .town-pill, .process-step, .contact-info-item')
